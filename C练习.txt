@@ -1,0 +1,72 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include"stdafx.h"
+#include<stdlib.h>
+int add(int i,int j)
+{
+	int sum;
+	sum = i + j;
+	return sum;		
+}
+int sub(int i,int j)
+{
+	int sum;
+	sum = i-j;
+	return sum;
+}
+int chen(int i, int j)
+{
+	int sum;
+	sum = i*j;
+	return sum;	
+}
+int chu(int i, int j)
+{
+	int sum;
+	sum = i /j;
+	return sum;
+}
+void shuchu()
+{
+	printf("请输入要计算的数字：");
+}
+
+int main()
+{
+	int a;
+	int b;
+	int value;
+	int i=0;
+	printf("请输入要进行运算的类型：1 表示add\n，2 表示sub\n，3 表示chen\n,4 表示chu\n");
+	scanf_s("%d", &i);
+	if (i == 1){
+		shuchu();
+		scanf_s("%d%d", &a, &b);
+		value = add(a,b);
+		printf("sum=%d", value);
+	}
+	else if (i == 2){
+		shuchu();
+		scanf_s("%d %d", &a, &b);
+		value = sub(a, b);
+		printf("sum=%d", value);
+	}
+	else if (i == 3){
+		shuchu();
+		scanf_s("%d %d", &a, &b);
+		value = chen(a, b);
+		printf("sum=%d", value);
+	}
+	else if (i == 4){
+		shuchu();
+		scanf_s("%d %d", &a, &b);
+		value = chu(a, b);
+		printf("sum=%d", value);
+	}
+	system("pause");
+	return 0;
+
+	}
+
+
+
