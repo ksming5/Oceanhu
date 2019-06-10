@@ -1,0 +1,27 @@
+、字符串转化（压缩）   “aabbccdaa” -> "a2b2c2d1a2"
+函数原型：
+public class Solution {
+    public static String stringCompress(String str) {
+        StringBuffer arr1 = new StringBuffer();
+        char[] arr = str.toCharArray();
+        arr1.append(arr[0]);
+        char tmp = arr[0];
+        int count = 1;
+        for (int i = 1; i < arr.length ; i++) {
+            if (tmp == arr[i]) {
+                count++;
+            } else {
+                arr1.append((char)(count+'0'));
+                arr1.append(arr[i]);
+                tmp = arr[i];
+                count = 1;
+            }
+        }
+        arr1.append((char)(count+'0'));
+        String str1 = new String(arr1);
+        return str1;
+    }
+    public static void main(String[] args) {
+        System.out.println(stringCompress("aaasdrreg"));
+    }
+}
