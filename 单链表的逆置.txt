@@ -1,0 +1,15 @@
+ public Node reverseList(){
+        Node cur = this.head;
+        Node reverseHead = null;//新的头结点
+        Node prev = null;//前驱
+        while(cur != null) {
+            Node curNext = cur.next;
+            if(curNext == null) {
+                reverseHead = cur;
+            }
+            cur.next = prev;
+            prev = cur;
+            cur = curNext;
+        }
+        return reverseHead;
+    }
