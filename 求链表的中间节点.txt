@@ -1,0 +1,24 @@
+ public Node middleNode() {
+        int len = getLength()/2;
+        Node cur = this.head;
+        for (int i = 0; i < len; i++) {
+            cur = cur.next;
+        }
+        return cur;
+    }
+    public Node findKthToTail(int k) {
+        Node fast =this.head;
+        Node slow= this.head;
+        if(k<=0||k>getLength()||fast==null){
+            return  null;
+        }
+        for(int i=0;i<k-1;i++){
+            fast=fast.next;
+        }
+
+        while(fast.next!=null){
+            fast=fast.next;
+            slow=slow.next;
+        }
+        return  slow;
+    }
