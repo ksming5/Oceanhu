@@ -1,0 +1,18 @@
+将字符串中的空格替换为%20；
+        public String replaceSpace(StringBuffer str){
+            StringBuffer str1=new StringBuffer();
+            for(int i=0;i<str.length();i++){
+                if(str.charAt(i)==' '){
+                   str1.append("%20");
+                }else{
+                    str1.append(str.charAt(i));
+                }
+            }
+            return str1.toString();
+        }
+        public static void main(String[] args) {
+            MyFirstJdbcCase f=new MyFirstJdbcCase();
+            StringBuffer str=new StringBuffer("i have a apple");
+            System.out.println(f.replaceSpace(str));
+
+        }
