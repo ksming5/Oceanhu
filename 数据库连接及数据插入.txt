@@ -1,0 +1,33 @@
+ public static Connection lianjie(){//数据库连接
+        Connection connection = null;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            String url = "jdbc:mysql://localhost:3306/memo?useSSL=true";
+            String user = "root";
+            String password = "775208";
+            try {
+                connection = DriverManager.getConnection(url, user, password);
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return connection;
+    }
+    //创建MemoGroup
+   public static Boolean createMemoGroup(MemoGroup memoGroup) {//表内添加数据
+       String memogroupinsertsql = "insert into memo_group(name,created_time) values (?,?)";
+       int effect = -1;
+       try {
+           PreparedStatement statement = lianjie().prepareStatement(memogroupinsertsql);
+           statement.setString(1, memoGroup.getName());
+           statement.setTimestamp(2, Timestamp.valueOf(memoGroup.getCreated_time()));
+           effect = statement.executeUpdate();
+
+       } catch (SQLException e) {
+           e.printStackTrace();
+       }
+      return effect==1;
+   }
