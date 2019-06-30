@@ -1,0 +1,13 @@
+  将链表中的元素值逆转
+    public ArrayListInteger printListFromTailToHead(ListNode listNode) {
+        ArrayListInteger list=new ArrayList();
+        StackInteger str=new Stack();初始化一个栈，
+        while(listNode!=null){将链表中的元素依次入栈，
+            str.push(listNode.val);
+            listNode=listNode.next;
+        }
+        while(!str.empty()){将栈内的元素依次出栈，放入list集合中
+            list.add(str.pop());
+        }
+        return list;返回list集合
+    }
