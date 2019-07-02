@@ -1,0 +1,51 @@
+解题思想:
+本题中将字符串B插入到字符串B中，
+且字符串A、B都为小写，长度不大于100.
+判断插入位置不同，形成的回文字符串的个数。
+public static int huiwen(String A, String B) {
+        int count = 0;
+        StringBuffer str = new StringBuffer(A);//将字符串A转换为StringBuffer类型，
+        //char[] arrB = B.toCharArray();
+        if(str==null||B==null){
+            System.out.println("数组或字符串为空！");
+        }
+        if(A.length()>=100){
+            System.out.println("长度太大");
+        }
+        if(B.length()>=100){
+            System.out.println("长度太大");
+        }
+        for(int i=0;i<A.length();i++){
+            if(A.charAt(i)>=65&&A.charAt(i)<=90){
+               throw new IllegalArgumentException("大小写错误");
+            }
+        }
+        for(int i=0;i<B.length();i++){
+            if(B.charAt(i)>=65&&B.charAt(i)<=90){
+                throw new IllegalArgumentException("大小写错误");
+            }
+        }
+        for (int i = 0; i <=str.length(); i++) {
+            str.insert(i, B);
+            StringBuffer str1=new StringBuffer();
+            for(int j=str.length()-1;j>=0;j--){
+                str1.append(str.charAt(j));
+            }
+            if (str.toString().equals(str1.toString())) {
+                count++;
+            }
+            System.out.println(str1.toString());
+
+          /*  int a = 0;
+            int j = str.length()-1;
+            while((str.charAt(a)==str.charAt(j))&&j>a){
+                if(j==a+1){
+                    count++;
+                }
+                a++;
+                j--;
+            }*/
+            str.delete(i, i+B.length());
+        }
+        return count;
+    }
