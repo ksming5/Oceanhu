@@ -1,0 +1,74 @@
+//使用快速排序的思想将给定的序列的重新排序，并将第K大的元素输出
+//本题的主要思想是使用快速排序将一组无序的数组排列成有序的状态，然后找到第K大的元素
+//n代表元素的个数
+
+  public static int findKth(int[] a, int n, int K) {
+       // write code here
+       int low=0;
+       int high=a.length-1;
+       int num=0;
+
+       if(K<1||K>n){
+           throw new IllegalArgumentException("输入不合法");
+       }
+       Sort(a,low,high);
+       if(n>=K&&K>=1){
+           int i=a.length;
+               num=a[i-K];
+           }
+
+      /* int[] b=new int[a.length];
+       int i=a.length-1;
+       int j=0;*/
+     /*  while(i>0){//将有序的数组a逆置成数组b
+           if(a[i]==a[i-1]){
+               b[j]=a[i];
+               i=i-2;
+               j++;
+           }else{
+               b[j]=a[i];
+               j++;
+               i--;
+           }
+       }
+       b[j]=a[0];
+       for (int c = 0; c < b.length; c++) {
+           System.out.print(b[c]+"  ");
+       }
+       num=b[K-1];*/
+       return num;
+   }
+   public static  void Sort(int[] arr,int low,int high) {
+       int i,j,temp,t;
+       if(low>high){
+           return;
+       }
+       i=low;
+       j=high;
+       //temp就是基准位
+       temp = arr[low];
+       while (i<j) {
+           //先看右边，依次往左递减
+           while (temp<=arr[j]&&i<j) {
+               j--;
+           }
+           //再看左边，依次往右递增
+           while (temp>=arr[i]&&i<j) {
+               i++;
+           }
+           //如果满足条件则交换
+           if (i<j) {
+               t = arr[j];
+               arr[j] = arr[i];
+               arr[i] = t;
+           }
+       }
+       //最后将基准为与i和j相等位置的数字交换
+       arr[low] = arr[i];
+       arr[i] = temp;
+       //递归调用左半数组
+
+       Sort(arr, low, j-1);
+       //递归调用右半数组
+       Sort(arr, j+1, high);
+   }
