@@ -1,0 +1,39 @@
+/*
+以空瓶换水，三个瓶子换一瓶水，
+如果最后只有两个瓶子，则向老板借一瓶水，喝完后，还给老板三个瓶子，
+如果有n个空瓶子，求最多能还几瓶水
+*/
+    public static int pingshu(int n) {
+        if (n > 100) {
+            throw new IllegalArgumentException("输入有误");
+        }
+        if (n >= 1 && n < 3) {
+            return 0;
+        }
+        int count=0;
+        while(n>=3){
+            int a = n / 3;
+            int yushu = n % 3;
+             n = a + yushu;
+             if(n==0){
+                 break;
+             }
+             count=count+a;
+            /* if(n>=3&&yushu!=0){
+                 count++;
+             }*/
+             if(n==2){
+                 n=n+1;
+             }
+        }
+        return count;
+    }
+ public static void main(String[] args) {
+      Scanner scanner=new Scanner(System.in);
+       while(scanner.hasNext()){
+           int num=scanner.nextInt();
+           if(num!=0){
+               System.out.println(pingshu(num));
+           }
+       }
+   }
