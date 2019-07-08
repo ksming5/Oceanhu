@@ -1,0 +1,28 @@
+ public static  boolean chkParenthesis(String A, int n) {
+        // write code here
+        Stack<String> stack=new Stack<>();
+        if(A.charAt(0)==')'){
+            return false;
+        }
+        for(int i=0;i<A.length();i++){
+            if(A.charAt(i)!='('&&A.charAt(i)!=')'){
+                return false;
+            }
+            if(A.charAt(i)=='('){
+                stack.push(String.valueOf(A.charAt(i)));
+            }
+            if (A.charAt(i) == ')') {
+                if(!stack.empty()){
+                    stack.pop();
+                }else{
+                    return false;
+                }
+            }
+        }
+
+        if(!stack.empty()){
+            return false;
+        }
+        return true;
+
+    }
