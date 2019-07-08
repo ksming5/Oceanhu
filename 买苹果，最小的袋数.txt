@@ -1,0 +1,44 @@
+小明要买N个苹果，一袋装6个，一带装8个，求小明能买的最小袋数，N>1   N<100    如果不能买n个，则返回-1
+苹果数小于100，所以，
+有方程6*a<100;所以a<17;
+8*b<100;所以b<12;
+让总代数为C,则C肯定小于17+12；
+两个循环遍历，找到6*a+b*8==n
+得出了a和b的值，没得到一次a+b的值，同时判断值是否小于c，小于的话，说明a+b是小袋数，再将a+b的值给C
+这样没得到一次a+b，就和c比较一次，如果比c小，说明新的到的a和b才是最小的，直到循环遍历完，
+得出的就是最小的代数，
+最后判断一下，如果有c的值，那么它肯定小于17+12
+若没有，则说明买不到n个苹果，则返回-1
+import java.util.Scanner;
+public class Main{
+     public static int maxapple(int n) {
+        int a = 0;
+        int b = 0;
+        int c = 29;
+        int max = 0;
+        for (a = 0; a < 17; a++) {
+            for (b = 0; b < 12; b++) {
+                if (((a * 6) + (b * 8) )== n) {
+                    if ((a + b) < c) {
+                        c = a + b;
+                    }
+
+                }
+            }
+
+        }
+        if(c<29){
+            return c;
+        }
+        return -1;
+    }
+    public static void main(String[] args){
+         Scanner scanner=new Scanner(System.in);
+       while(scanner.hasNext()){
+           int num=scanner.nextInt();
+           if(num<=100&&num>=1){
+               System.out.println(maxapple(num));
+           }
+       }
+    }
+}
