@@ -1,0 +1,46 @@
+   /**
+     * 两个数的乘积等于两个数的最小公倍数乘最大公约数
+     *
+     * 所以，可以先求最大公约数，
+     *
+     *
+     * @param x
+     * @param y
+     * @return
+     */
+//使用四种方法求最小公倍数 
+ public static int beishu1(int x,int y){
+        int a=x;
+        int b=y;
+        int c=0;
+        if(a<b){//将大的数赋值给a，小的数赋值给b；
+            c=a;
+            a=b;
+            b=c;
+        }
+        while(b!=0){//辗转相除法，求得最大公约数a（大数除小数）
+            c=a%b;
+            a=b;
+            b=c;
+        }
+        return x*y/a;//得到最小公倍数
+
+    }
+    public static int beishu3(int x,int y){//使用穷举法求得两数最大公约数
+        int a;
+        for(a=x;a>0;a--){
+            if(x%a==0&&y%a==0){
+                break;
+            }
+        }
+        return a;
+    }
+    public static int beishu4(int x,int y){//求得两数最小公倍数
+        int a=0;
+        for(a=x;;a++){
+            if(a%x==0&&y%x==0){
+                break;
+            }
+        }
+        return a;
+    }
