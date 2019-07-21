@@ -1,0 +1,73 @@
+public class TopK {
+    private int[] arr;
+    public TopK(int k){
+        this.arr=new int[k];
+    }
+    /**
+     * 从上向下，建立小根
+     * @param root
+     * @param len
+     */
+    public void AdjustDown(int root, int len){
+        int parent = root;
+        int child = 2*parent + 1;
+        while(child < len){
+            if(child+1 < len&&arr[child] > arr[child+1]){
+                child++;
+            }
+            if(arr[child] < arr[parent]){
+                int tmp = arr[child];
+                arr[child] = arr[parent];
+                arr[parent] = tmp;
+                parent = child;
+                child = 2*parent + 1;
+            }else{
+                break;
+            }
+        }
+    }
+    /**
+     * 先将数组中前K个元素找到，并将这前K个元素建成小根堆
+     * @param arr1   表示输入的一组数据
+     * @param k   表示k个元素
+     * @return
+     */
+    public  int[] createminHeap(int[] arr1,int k){
+
+        for(int i = 0;i < k;i++){//将数组arr1中的前k个元素复制到arr里面 。
+            arr[i] = arr1[i];
+        }
+        for(int i = (arr.length-1-1)/2;i >= 0;i--){//通过递归将arr转换为小根堆
+            AdjustDown(i,arr.length);
+        }
+        return arr;
+    }
+    /**
+     * @param arr1 表示输入的一组数据
+     * @param k  表示k个元素
+     * @return
+     *
+     *  将数组arr1中剩下的arr1.length-k个数与arr[0]进行比较，如果比arr[0]大，则交换两个数，
+     *  再将arr调整为小根堆，依次遍历，直到将arr1.length-k个数全部与arr[0]比较一遍。
+     *
+     */
+    public int[]  insert(int[] arr1 ,int k){
+       for(int i = k;i < arr1.length;i++){//
+           if(arr1[i] > arr[0]){
+               arr[0] = arr1[i];
+               createminHeap(arr,k);
+           }
+       }
+       return arr;
+    }
+    public static void main(String[] args) {
+        int[] arr = {1,6,7,2,3,4,8,5,9,0};
+        int k = 5;
+        TopK topK = new TopK(k);
+        topK.createminHeap(arr,k);
+        int[] arr1 = topK.insert(arr,k);
+        for(int i = 0;i < arr1.length;i++){
+            System.out.print(arr1[i]+"  ");
+        }
+    }
+}
