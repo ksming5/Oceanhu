@@ -1,0 +1,29 @@
+以给定值x为基准将链表分割成两部分，
+所有小于x的结点排在大于或等于x的结点之前
+给定一个链表的头指针 ListNode* pHead，
+请返回重新排列后的链表的头指针。注意：分割以后保持原来的数据顺序不变。
+   public  Node partition(Node pHead, int x) {
+        Node cur = pHead;
+        Node Shead = new Node(-1);
+        Node Bhead = new Node(-1);
+        Node ca = Shead;
+        Node ba = Bhead;
+        Node head = null;
+        while(cur != null){
+            if(cur.data < x){
+                ca.next = cur;
+                ca = ca.next;
+               
+            }else {
+                ba.next =cur;
+                ba = ba.next;
+            }
+            cur = cur.next;
+        }
+        cur = Shead;
+        while(cur != null){
+            cur = cur.next;
+        }
+       ca.next = Bhead.next;
+        return Shead.next;
+    }
