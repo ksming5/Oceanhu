@@ -1,0 +1,27 @@
+密码的还原，输入一串字符，F转换为A，依次转5个
+import java.util.Scanner;
+public class Main{
+    public static String chang(String str){
+        String str1 = "";
+        for(int i = 0;i < str.length();i++){
+           if(str.charAt(i) == ' '){
+                str1 = str1 + ' ';
+            }else if(str.charAt(i) < 70){
+                str1 = str1 + (char)(str.charAt(i)+21);
+            } else{
+                str1 = str1 +(char)(str.charAt(i)-5);
+            }
+
+        }
+        return str1;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc =new Scanner(System.in);
+        while(sc.hasNext()){
+            String str = sc.nextLine();
+            System.out.println(chang(str));
+        }
+
+}
+}
