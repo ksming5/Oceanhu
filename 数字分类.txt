@@ -1,0 +1,78 @@
+
+
+import java.util.*;
+import java.text.DecimalFormat;  
+public class Main{
+    public static void main(String[] args){
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        int[] arr = new int[n];
+        for(int i = 0; i < arr.length;){
+            int m = scanner.nextInt();
+            if(m >= 0){
+                arr[i] = m;
+                i++;
+            }
+        }
+        int A1 = 0;
+        int A2 = 0;
+        int flag = 1;
+        int A3 = 0;
+        int a = 0;
+        double count = 0;
+        String A4 =new String();
+        int A5 = 0;
+        for(int j = 0;j < arr.length;j++){
+            if(arr[j]>0&&arr[j] % 5 == 0&&arr[j] % 2 == 0){
+                 A1 = A1 + arr[j];
+            } 
+            if(arr[j]>0&&arr[j] % 5 == 1){
+                A2 = A2 +(arr[j] * flag);
+                flag = flag * -1;
+            }
+            if(arr[j]>0&&arr[j] % 5 ==2){
+                A3++;
+            }
+            if(arr[j]>0&&arr[j] % 5 == 3){
+                a += arr[j];
+                count++;
+            }
+            if(arr[j]>0&&arr[j] % 5 == 4){
+                if(arr[j] > A5){
+                    A5 = arr[j];
+                }
+            }
+        }
+          DecimalFormat s = new DecimalFormat("#.0");
+        if(a != 0){
+            A4 =s.format( a / count);
+        }
+       if(A1 != 0){
+           System.out.print(A1+" ");
+       }else{
+           System.out.print("N"+" ");
+       }
+        
+        if(A2 != 0){
+           System.out.print(A2+" ");
+       }else{
+           System.out.print("N"+" ");
+       }
+        if(A3 != 0){
+           System.out.print(A3+" ");
+       }else{
+           System.out.print("N"+" ");
+       }
+        if(A4 != null){
+           System.out.print(A4+" ");
+       }else{
+           System.out.print("N"+" ");
+       }
+        if(A5 != 0){
+           System.out.print(A5);
+       }else{
+           System.out.print("N");
+       }
+       
+    }
+}
