@@ -1,0 +1,35 @@
+import java.util.Scanner;
+public class Main{
+     public static String maxString(String str,int n){
+        int count = 0;
+        int com = 0;
+
+        String str1 = new String();
+        String str2 = null;
+        for(int i = 0;i <= str.length()-n;i++){
+            for(int j = i;j < n+i; j++ ){
+                if(str.charAt(j)==67||str.charAt(j)==71){
+                    count++;
+                }
+                str1 = str1+String.valueOf(str.charAt(j));
+            }
+            if(count > com){
+                str2 = str1;
+                com = count;
+                count = 0;
+                str1 ="";
+            }else{
+                str1 ="";
+                count = 0;
+            }
+        }
+        return str2;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String str = scanner.nextLine();
+        int n = scanner.nextInt();
+        System.out.println(maxString(str,n).toString());
+    }
+}
