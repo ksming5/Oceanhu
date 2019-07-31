@@ -1,0 +1,12 @@
+public class Main{
+    public static void main(String[] args){
+        long richmen = 0;
+        long Strangermen = 0;
+        for(int i = 1 ; i<= 30;i++){
+            Strangermen  += 10;
+            richmen +=(long)Math.pow(2,i-1);
+        }
+       System.out.println(Strangermen+" " +richmen);
+       
+    }
+}
