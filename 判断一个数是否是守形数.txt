@@ -1,0 +1,15 @@
+  public static String shouXing(int x){
+        int a = x*x;
+        String str = String.valueOf(a);
+        String str1 = String.valueOf(x);
+        int b = str.length()-1;
+        for(int i = str1.length()-1; i >= 0;i--){
+            if(str1.charAt(i) == str.charAt(b)){
+                b--;
+            }else{
+                return "No!";
+            }
+        }
+        return "Yes!";
+
+    }
