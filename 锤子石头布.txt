@@ -1,0 +1,96 @@
+import java.util.*;
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int js = 0;
+        int jp = 0;
+        int jf = 0;
+        int ys = 0;
+        int yp = 0;
+        int yf = 0;
+        int jiac  = 0;
+        int jiaj = 0;
+        int jiab = 0;
+        int yic = 0;
+        int yij = 0;
+        int yib = 0;
+        while(sc.hasNext()){
+            int n = sc.nextInt();
+            for(int i = 0;i < n;i++){
+                String jia = sc.next();
+                String yi = sc.next();
+                if(jia.equals("C")&&yi.equals("J")){
+                    js++;
+                    yf++;
+                    jiac++;
+
+                }else if("J".equals(jia)&&"B".equals(yi)){
+                    js++;
+                    yf++;
+                    jiaj++;
+
+                }else if("B".equals(jia)&&"C".equals(yi)){
+                    js++;
+                    yf++;
+                    jiab++;
+
+                }else if("C".equals(yi)&&"J".equals(jia)){
+                    jf++;
+                    ys++;
+                    yic++;
+                } else if("J".equals(yi)&&"B".equals(jia)){
+                    jf++;
+                    ys++;
+                    yij++;
+                }else if("B".equals(yi)&&"C".equals(jia)){
+                    jf++;
+                    ys++;
+                    yib++;
+                }else if("C".equals(yi)&&"C".equals(jia)){
+                    jp++;
+                    yp++;
+
+                } else if("J".equals(yi)&&"J".equals(jia)){
+                    jp++;
+                    yp++;
+                } else if("B".equals(yi)&&"B".equals(jia)){
+                    jp++;
+                    yp++;
+                }else{
+
+                }
+            }
+            System.out.println(js+" "+jp+" "+jf);
+            System.out.println(ys+" "+yp+" "+yf);
+            if(jiac > jiab ){
+                if(jiac >= jiaj){
+                    System.out.print("C");
+                }else{
+                    System.out.print("J");
+                }
+            }else{
+                if(jiab >= jiaj){
+                    System.out.print("B");
+                }else{
+                    System.out.print("J");
+                }
+            }
+            if(yic > yib ){
+                if(yic >= yij){
+                    System.out.println(" C");
+                }else{
+                    System.out.println(" J");
+                }
+            }else{
+                if(yib >= yij){
+                    System.out.println(" B");
+                }else{
+                    System.out.println(" J");
+                }
+            }
+
+        }
+    }
+    
+
+}
