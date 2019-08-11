@@ -1,0 +1,51 @@
+ 
+
+写出一个程序，接受一个十六进制的数值字符串，输出该数值的十进制字符串。（多组同时输入 ）
+
+public static int numberSystem(String str1){
+        String str = " ";
+        for(int i = 0;i < str1.length();i++){
+            if(str1.charAt(i) == 'x'){
+                str = str1.substring(i+1);
+            }
+        }
+        int q = 0;
+        int num = 0;
+
+        StringBuffer s1 = new StringBuffer();
+        for(int j = 0;j <= str.length()-1;j++){
+            StringBuffer s = new StringBuffer();
+            if(str.charAt(j) >=48&&str.charAt(j) <= 57){
+                num = str.charAt(j) - 48;
+            }
+            if(str.charAt(j) >=65&&str.charAt(j) <= 70){
+                num =str.charAt(j) - 55;
+            }
+            int a = 0;
+            int b = num;
+            while(b != 0){
+                a = b%2;
+                b = b/2;
+                s.append(a);
+            }
+            while(s.length() < 4){
+                s.append(0);
+            }
+            s.reverse();
+            s1.append(s);
+        }
+        int sum = 0;
+        for(int i = s1.length()-1;i >= 0 ;i--){
+            sum += Math.pow(2,(s1.length()-1)-i)*(s1.charAt(i)-48);
+        }
+
+        return sum;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc  = new Scanner(System.in);
+        while(sc.hasNext()){
+            String str = sc.nextLine();
+            System.out.println(numberSystem(str));
+        }
+    }
