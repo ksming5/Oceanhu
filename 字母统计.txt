@@ -1,0 +1,31 @@
+
+
+输入一行字符串，计算其中A-Z大写字母出现的次数
+
+
+import java.util.*;
+public class Main{
+    public static void main(String[] args){
+        Map<String ,Integer> map = new LinkedHashMap<>();
+        Scanner sc = new Scanner(System.in);
+
+        while(sc.hasNext()){
+            String str = sc.nextLine();
+            int count = 0;
+            for(int i =65 ;i <= 90;i++){
+                char a = (char)i;
+                map.put(String.valueOf(a),count);
+            }
+            for(int j = 0;j < str.length();j++){
+                if(map.containsKey(String.valueOf(str.charAt(j)))){
+                    count = map.get(String.valueOf(str.charAt(j)))+1;
+                    map.put(String.valueOf(str.charAt(j)),count);
+                }
+            }
+            for (Map.Entry<String,Integer> entry:map.entrySet()
+                 ) {
+                System.out.println(entry.getKey()+":"+entry.getValue());
+            }
+        }
+    }
+}
