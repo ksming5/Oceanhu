@@ -1,0 +1,29 @@
+任何一个整数m的立方都可以写成m个连续奇数之和
+import java.util.Scanner;
+public class Main{
+    public static String GetSequeOddNum(int m){
+        StringBuffer str=new StringBuffer();
+            int a = m*m-m+1;
+            int count = m;
+            while(count > 0){
+                str.append(Integer.toString(a));
+                if(count>1){
+                    str.append("+");
+                }
+                a=a+2;
+                count--;
+            }
+        return new String(str);
+    }
+     public static void main(String[] args) {
+
+      Scanner scanner = new Scanner(System.in);
+         while(scanner.hasNext()){
+             int n = scanner.nextInt();
+        if(n>0&&n<=100){
+            System.out.println(GetSequeOddNum(n));
+        }
+     }
+        
+     }
+}
