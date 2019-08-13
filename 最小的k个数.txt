@@ -1,0 +1,50 @@
+import java.util.*;
+public class Solution {
+     public static int[] adjustdown(int[] arr){
+        for(int i = (arr.length-1-1)/2;i >=0;i--){
+            int parent = i;
+            int chilld = 2*parent+1;
+
+            while(chilld <arr.length){
+                if(chilld+1 < arr.length&&arr[chilld] < arr[chilld+1]){
+                    chilld++;
+                }
+                if(arr[chilld] > arr[parent]){
+                    int tmp = arr[chilld];
+                    arr[chilld] = arr[parent];
+                    arr[parent] = tmp;
+                    parent = chilld;
+                    chilld = 2*parent+1;
+                }else{
+                    break;
+                }
+            }
+        }
+       return arr;
+
+    }
+    public ArrayList<Integer> GetLeastNumbers_Solution(int [] input, int k) {
+        ArrayList<Integer> list = new ArrayList<>();
+
+        if(k > input.length||k<1){
+            return list;
+        }
+        int[] arr = new int[k];
+        for(int i = 0 ;i< k;i++){
+            arr[i] = input[i];
+        }
+       int []  aa1 =  adjustdown(arr);
+        for(int j = k;j <input.length;j++){
+            if(aa1[0] > input[j]){
+                aa1[0] = input[j];
+                aa1 = adjustdown(arr);
+            }
+        }
+        for(int j = 0;j<aa1.length;j++){
+            list.add(aa1[j]);
+        }
+        return list;
+
+    }
+
+}
