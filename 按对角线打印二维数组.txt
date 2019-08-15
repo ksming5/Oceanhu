@@ -1,0 +1,61 @@
+  public static int[] arrayPrint(int[][] arr, int n) {
+        // write code here
+       Queue<Integer> queue = new LinkedList<>();
+        int j = 0;
+        for(int i = n-1;i >= 0;i--){
+            int count = i;
+            int v = arr[j][i];
+            queue.add(arr[j][i]);
+            while(count <n-1){
+                j = j+1;
+                count = count+1;
+                int x = arr[j][count];
+                queue.add(arr[j][count]);
+
+            }
+            if(count == n-1){
+                j = 0;
+            }
+
+        }
+        int i = 0;
+        for(j =1;j< n ;j++){
+            int count = j;
+            queue.add(arr[j][i]);
+            int v = arr[j][i];
+            while(count <n-1){
+                i = i+1;
+                count = count+1;
+                int p = arr[count][i];
+                queue.add(arr[count][i]);
+
+            }
+            if(count == n-1){
+                i = 0;
+            }
+        }
+        int [] arr1 = new int[n*n];
+        int f= 0;
+       while(!queue.isEmpty()){
+           arr1[f] = queue.poll();
+           f++;
+       }
+        return arr1;
+    }
+
+    public static void main(String[] args) {
+        int a[][] =new int[4][4];
+        int b = 1;
+        for(int i = 0;i <4;i++){
+            for(int k = 0;k <4 ;k++){
+                a[i][k] = b;
+                b++;
+            }
+        }
+     //   int a[4][3]= {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
+        int[] m = arrayPrint(a, 4);
+        for (int q = 0; q < m.length; q++) {
+            System.out.println(m[q]);
+        }
+    }
+ 
