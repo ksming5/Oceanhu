@@ -1,0 +1,32 @@
+import java.util.*;
+public class Main{
+    public static  String huiwenchuan(String str){
+        int j = str.length()-1;
+        int count = 0;
+        int i = 0;
+       while(i<= j){
+            if(str.charAt(i) == str.charAt(j)){
+                j--;
+                i++;
+            }else{
+                j--;
+                count++;
+               if(str.charAt(i) != str.charAt(j)){
+                   j++;
+                   i++;
+               }
+            }
+        }
+        if(count >1){
+            return "NO";
+        }
+        return "YES";
+    }
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNext()){
+            String s = sc.nextLine();
+        System.out.println(huiwenchuan(s));
+        }
+    }
+}
