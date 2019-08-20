@@ -1,0 +1,22 @@
+收的红包中，有个金额大于总数的一半，求金额数，
+    public static int getValue(int[] gifts, int n) {
+            int count = 0;
+            int a = 0;
+            int c = 0;
+            for(int i = 0;i < gifts.length-1;i++){
+                for(int j = i+1;j < gifts.length ;j++){
+                    if(gifts[i]==gifts[j]){
+                        count++;
+                    }
+                }
+                if(count>n/2&&count>a){
+                    a= count;
+                    c = gifts[i];
+                    count = 0;
+                }
+            }
+            if(a>n/2){
+                return c;
+            }
+            return 0;
+        }
