@@ -1,0 +1,21 @@
+import java.util.*;
+public class Main{
+    public static void change(String str1){
+        String[] arr = str1.split("[^a-zA-Z]+");
+
+        for(int i = arr.length-1;i >= 0 ;i--){
+            if(arr[i] != null)
+           System.out.print(arr[i]);
+            if(i != 0){
+                 System.out.print(" ");
+            }
+        }
+    }
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNext()){
+            String str = sc.nextLine();
+     change(str);
+        }
+    }
+}
